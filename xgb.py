@@ -11,7 +11,7 @@ test_data_df.columns = ['Item_Weight','Item_Fat_Content','Item_Visibility','Item
 myResults = train_data_df['Item_Outlet_Sales'] 
 myResults = np.array(myResults)
 
-labels_numeric = pd.Series(train_data_df['Item_Outlet_Sales'],dtype = "float")
+labels_numeric = pd.Series(train_data_df['Item_Outlet_Sales'],dtype = "float64")
 labels_numeric = labels_numeric.astype(np.float)
 #print labels_numeric
 train_data_df = train_data_df.drop('Item_Outlet_Sales',1)
@@ -30,13 +30,13 @@ param = {}
 param['eta'] = 0.1
 param['gamma'] = 1
 # param['n_estimators'] = 1000
-param['min_child_weight'] = 5
-param['max_depth'] = 8
-# param['subsample'] = 0.5
+param['min_child_weight'] = 20
+param['max_depth'] = 2
+param['subsample'] = 0.85
 # param['colsample_bytree'] = 0.5
-# param['max_delta_step'] = 20
+param['max_delta_step'] = 20
 # param['lambda'] = 10
-num_round = 1000
+num_round = 5000
 
 gbm = xgb.train(param,xg_train,num_round)
 test_pred = gbm.predict(xg_test,output_margin = True)
