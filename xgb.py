@@ -5,8 +5,8 @@ import xgboost as xgb
 train_data_df = pd.read_csv('train.csv',delimiter=',',header = None)
 test_data_df = pd.read_csv('test.csv',header = None ,delimiter=",")
 
-train_data_df.columns = ['Item_Weight','Item_Fat_Content','Item_Visibility','Item_Type','Item_MRP','Outlet_Establishment_Year','Outlet_Size','Outlet_Location_Type','year','Outlet_Type','Item_Outlet_Sales']
-test_data_df.columns = ['Item_Weight','Item_Fat_Content','Item_Visibility','Item_Type','Item_MRP','Outlet_Establishment_Year','Outlet_Size','Outlet_Location_Type','year','Outlet_Type']
+train_data_df.columns = ['Item_Weight','Item_Fat_Content','Item_Visibility','Item_Type','Item_MRP','Outlet_Establishment_Year','Outlet_Size','Outlet_Location_Type','Outlet_Type','Item_Outlet_Sales']
+test_data_df.columns = ['Item_Weight','Item_Fat_Content','Item_Visibility','Item_Type','Item_MRP','Outlet_Establishment_Year','Outlet_Size','Outlet_Location_Type','Outlet_Type']
 
 myResults = train_data_df['Item_Outlet_Sales'] 
 myResults = np.array(myResults)
@@ -27,8 +27,6 @@ train_data_df['Outlet_Establishment_Year'] = train_data_df['Outlet_Establishment
 train_data_df['Outlet_Size'] = train_data_df['Outlet_Size'].astype('category')
 train_data_df['Outlet_Location_Type'] = train_data_df['Outlet_Location_Type'].astype('category')
 train_data_df['Outlet_Type'] = train_data_df['Outlet_Type'].astype('category')
-# train_data_df['year'] = train_data_df['year'].astype('category')
-
 
 test_data_df['Item_Fat_Content'] = test_data_df['Item_Fat_Content'].astype('category')
 test_data_df['Item_Type'] = test_data_df['Item_Type'].astype('category')
@@ -36,7 +34,6 @@ test_data_df['Outlet_Establishment_Year'] = test_data_df['Outlet_Establishment_Y
 test_data_df['Outlet_Size'] = test_data_df['Outlet_Size'].astype('category')
 test_data_df['Outlet_Location_Type'] = test_data_df['Outlet_Location_Type'].astype('category')
 test_data_df['Outlet_Type'] = test_data_df['Outlet_Type'].astype('category')
-# test_data_df['year'] = test_data_df['year'].astype('category')
 
 train_data_df = np.array(train_data_df)
 
